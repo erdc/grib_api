@@ -1,0 +1,15 @@
+if (localDefinitionNumber ==35) {
+	alias mars.date   = dataDate;
+	alias mars.time   = dataTime;
+} else {
+	# era 40
+	alias mars.date   = dateOfAnalysis;
+	alias mars.time   = timeOfAnalysis;
+}
+
+if (class is "od") { alias mars.origin = centre; }
+
+
+# We need this because 'jDirectionIncrementInDegrees,iDirectionIncrementInDegrees,' is defined later
+meta marsGrid sprintf("%g/%g",iDirectionIncrementInDegrees,jDirectionIncrementInDegrees) : dump;
+alias mars.grid = marsGrid;

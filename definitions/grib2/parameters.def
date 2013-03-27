@@ -1,0 +1,30 @@
+# Copyright 2005-2007 ECMWF
+#
+# Licensed under the GNU Lesser General Public License which
+# incorporates the terms and conditions of version 3 of the GNU
+# General Public License.
+# See LICENSE and gpl-3.0.txt for details.
+
+transient dummyc=0: hidden;
+constant conceptsMasterDir="grib2" : hidden;
+constant conceptsLocalDirAll="grib2/localConcepts/[centre:s]" : hidden;
+constant conceptsLocalDirECMF="grib2/localConcepts/ecmf" : hidden;
+
+concept paramIdECMF (defaultParameter,"paramId.def",conceptsMasterDir,conceptsLocalDirECMF): long_type,no_copy;
+concept paramId (paramIdECMF,"paramId.def",conceptsMasterDir,conceptsLocalDirAll): long_type;
+
+concept shortNameECMF (defaultShortName,"shortName.def",conceptsMasterDir,conceptsLocalDirECMF) : no_copy,dump;
+concept ls.shortName (shortNameECMF,"shortName.def",conceptsMasterDir,conceptsLocalDirAll) : no_copy,dump;
+
+concept unitsECMF (defaultName,"units.def",conceptsMasterDir,conceptsLocalDirECMF) : no_copy;
+concept units (unitsECMF,"units.def",conceptsMasterDir,conceptsLocalDirAll) : no_copy;
+
+concept nameECMF (defaultName,"name.def",conceptsMasterDir,conceptsLocalDirECMF) : no_copy,dump;
+concept name (nameECMF,"name.def",conceptsMasterDir,conceptsLocalDirAll) : no_copy,dump;
+
+#concept cfName (defaultShortName,"cfName.def",conceptsMasterDir,conceptsLocalDir) : no_copy;
+
+template_nofail names "grib2/products_[productionStatusOfProcessedData].def";
+
+meta ifsParam ifs_param(paramId,type);
+
